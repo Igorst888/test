@@ -1,9 +1,9 @@
 import { all, takeLatest, call, put } from 'redux-saga/effects';
 import * as fromAction from '../actions';
-import { getAllsers } from '../services/apiService';
+import { getAllUsers } from '../services/apiService';
 
 export function* handleUsersFetch() {
-  const users = yield call(getAllsers);
+  const users = yield call(getAllUsers);
   yield put(fromAction.loadUsersSuccess(users));
 }
 
