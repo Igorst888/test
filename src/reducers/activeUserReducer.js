@@ -17,8 +17,6 @@ const activeUserReducer = (state = initialState, action) => {
         error: false
       };
     case ACTIONS.LOAD_DETAILS_SUCCESS:
-      debugger;
-
       return {
         value: action.data,
         loading: false,

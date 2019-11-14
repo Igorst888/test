@@ -6,7 +6,6 @@ const UserDetails = (props) => {
 
   // componentDidMount
   useEffect(() => {
-    debugger;
     props.fetchDetails(props.match.params.id);
   }, []);
 

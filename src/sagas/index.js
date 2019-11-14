@@ -13,12 +13,9 @@ export function* handleUsersFetch() {
 }
 
 export function* handleUserDetailsFetch(action) {
-  debugger;
   try {
     yield put(fromAction.loadDetails());
     const data = yield call(getUserDetails, action.id);
-    debugger;
-
     yield put(fromAction.loadDetailsSuccess(data));
   } catch (error) {
     yield put(fromAction.loadDetailsFail(error.toString()));
