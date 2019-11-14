@@ -3,8 +3,12 @@ import * as fromAction from '../actions';
 import { getAllUsers } from '../services/apiService';
 
 export function* handleUsersFetch() {
-  const users = yield call(getAllUsers);
-  yield put(fromAction.loadUsersSuccess(users));
+  try {
+    const users = yield call(getAllUsers);
+    yield put(fromAction.loadUsersSuccess(users));
+  } catch (error) {
+    yield put(fromAction.loadUsersFail(error.toString()));
+  }
 }
 
 export function* watchUsersFetch() {
