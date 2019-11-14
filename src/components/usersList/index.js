@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import {Link} from 'react-router-dom';
 
 import {connect} from 'react-redux';
 import {fetchUsers} from '../../actions'
+import UserPreview from './userPreview';
 
 const UsersList = (props) => {
 
@@ -16,14 +16,15 @@ const UsersList = (props) => {
   return (<div>
     <h1>Users list</h1>
     {props.users.loading && <h2>Loading users...</h2>}
+    
+    <hr/>
 
-    {props.users.value
-    && props.users.value.map(user =>
-      (<div key={`users-${user.email}`}>
-        <h3>{user.name}</h3>
-        <Link to={`/user-details/${user.id}`}>{user.email}</Link>
-        <hr/>
-      </div>))}
+    {props.users.value && <ul>
+      {props.users.value.map(user =>
+        <li key={`users-${user.email}`}>
+          <UserPreview user={user}/>
+        </li>)}
+    </ul>}
   </div>)
 };
 
