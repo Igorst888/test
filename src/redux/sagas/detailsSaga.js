@@ -1,6 +1,6 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import * as fromAction from '../actions';
-import { getUserDetails } from '../services/apiService';
+import { getUserDetails } from '../../services/apiService';
 
 export function* handleUserDetailsFetch(action) {
   try {

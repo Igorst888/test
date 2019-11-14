@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 
 import {connect} from 'react-redux';
-import {fetchUsers} from '../../actions'
+import {fetchUsers} from '../../redux/actions'
 import UserPreview from './userPreview';
 
 const UsersList = (props) => {
@@ -16,9 +16,9 @@ const UsersList = (props) => {
   return (<div>
     <h1>Users list</h1>
     {props.users.loading && <h2>Loading users...</h2>}
-    
+
     <hr/>
-    
+
     {props.users.value && <ul>
       {props.users.value.map(user =>
         <li key={`users-${user.email}`}>

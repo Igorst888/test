@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import {fetchDetails} from '../../actions';
+import {fetchDetails} from '../../redux/actions';
 import {Link} from 'react-router-dom';
 
 const UserDetails = (props) => {
@@ -14,7 +14,7 @@ const UserDetails = (props) => {
     <h1>User {id} details</h1>
     <Link to="/">Go back to the list</Link>
     {props.activeUser.loading && <h1>Loading user details...</h1>}
-    
+
     <br/>
     <br/>
 

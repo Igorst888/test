@@ -1,6 +1,6 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import * as fromAction from '../actions';
-import { getAllUsers } from '../services/apiService';
+import { getAllUsers } from '../../services/apiService';
 
 export function* handleUsersFetch() {
   try {
