@@ -1,30 +1,23 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
+import { connect } from 'react-redux';
+import { fetchUsers } from '../../actions'
+
 const UsersList = (props) => {
-  const [users, changeUsers] = useState(null);
 
   // componentDidMount
   useEffect(() => {
-    if (!users) {
-      fetch('https://jsonplaceholder.typicode.com/users')
-        .then(res => {
-          if (!res.ok) {
-            throw new Error('fetch error')
-          }
-          return res.json();
-        })
-        .then(body => {
-          changeUsers(body);
-        })
+    if (props.users) {
+      props.fetchUsers();
     }
   }, []);
 
   return (<div>
-    {!users && <h1>Loading...</h1>}
+    {!props.users && <h1>Loading...</h1>}
 
-    {users
-      ? users.map(user => (<div key={user.id}>
+    {props.users
+      ? props.users.map(user => (<div key={user.id}>
         <h3>{user.name}</h3>
         <Link to={`/user-details/${user.id}`}>{user.email}</Link>
         <hr/>
@@ -34,4 +27,15 @@ const UsersList = (props) => {
   </div>)
 };
 
-export default UsersList;
+const mapStateToProps = ({users}) => ({
+  users
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchUsers: () => dispatch(fetchUsers())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UsersList);

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-
+import { connect } from 'react-redux';
+import {fetchDetails} from "../../actions";
 
 const UserDetails = (props) => {
   const [userDetails, changeUserDetails] = useState(null);
@@ -30,4 +31,15 @@ const UserDetails = (props) => {
   </div>)
 };
 
-export default UserDetails;
+const mapStateToProps = ({activeUser}) => ({
+  activeUser
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchDetails: (id) => dispatch(fetchDetails(id))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserDetails);

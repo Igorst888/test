@@ -1,7 +1,7 @@
 import { ACTIONS } from "../actions";
 
 const initialState = {
-  value: [],
+  value: null,
   loading: false,
   success: false,
   error: false
@@ -19,6 +19,7 @@ const usersReducer = (state = initialState, action) => {
       };
 
     case ACTIONS.LOAD_USERS_SUCCESS:
+      debugger;
       return {
         value: action.data,
         loading: false,
