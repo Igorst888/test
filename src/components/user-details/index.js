@@ -3,29 +3,22 @@ import { connect } from 'react-redux';
 import {fetchDetails} from "../../actions";
 
 const UserDetails = (props) => {
-  const [userDetails, changeUserDetails] = useState(null);
+
+  // componentDidMount
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/users/${props.match.params.id}`)
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('fetch error')
-        }
-        return res.json();
-      })
-      .then(body => {
-        changeUserDetails(body);
-      })
+    debugger;
+    props.fetchDetails(props.match.params.id);
   }, []);
 
   return (<div>
     <h1>User details</h1>
     <h2>User id: {props.match.params.id}</h2>
 
-    {userDetails
+    {props.activeUser.value
       ? <div>
-        {userDetails.name}
+        {props.activeUser.value.name}
         <br/>
-        {userDetails.email}
+        {props.activeUser.value.email}
       </div>
       : <h3>Loading user details...</h3>}
   </div>)
