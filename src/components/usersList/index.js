@@ -19,7 +19,7 @@ const UsersList = (props) => {
 
     {props.users.value
     && props.users.value.map(user =>
-      (<div key={user.id}>
+      (<div key={`users-${user.email}`}>
         <h3>{user.name}</h3>
         <Link to={`/user-details/${user.id}`}>{user.email}</Link>
         <hr/>
