@@ -8,16 +8,16 @@ const UsersList = (props) => {
 
   // componentDidMount
   useEffect(() => {
-    if (props.users) {
+    if (!props.users.value) {
       props.fetchUsers();
     }
   }, []);
 
   return (<div>
-    {!props.users && <h1>Loading...</h1>}
+    {!props.users.value && <h1>Loading...</h1>}
 
-    {props.users
-      ? props.users.map(user => (<div key={user.id}>
+    {props.users.value
+      ? props.users.value.map(user => (<div key={user.id}>
         <h3>{user.name}</h3>
         <Link to={`/user-details/${user.id}`}>{user.email}</Link>
         <hr/>

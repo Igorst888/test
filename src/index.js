@@ -6,8 +6,6 @@ import {Provider} from 'react-redux';
 import storeBuilder from './store';
 
 const store = storeBuilder();
-debugger;
-
 ReactDOM.render(
   <Provider store={store}>
     <App/>

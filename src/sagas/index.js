@@ -3,9 +3,7 @@ import * as fromAction from '../actions';
 import { getAllsers } from '../services/apiService';
 
 export function* handleUsersFetch() {
-  debugger;
   const users = yield call(getAllsers);
-  debugger;
   yield put(fromAction.loadUsersSuccess(users));
 }
 

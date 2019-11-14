@@ -19,7 +19,6 @@ const usersReducer = (state = initialState, action) => {
       };
 
     case ACTIONS.LOAD_USERS_SUCCESS:
-      debugger;
       return {
         value: action.data,
         loading: false,
