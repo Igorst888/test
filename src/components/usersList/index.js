@@ -18,7 +18,7 @@ const UsersList = (props) => {
     {props.users.loading && <h2>Loading users...</h2>}
     
     <hr/>
-
+    
     {props.users.value && <ul>
       {props.users.value.map(user =>
         <li key={`users-${user.email}`}>
