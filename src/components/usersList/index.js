@@ -14,7 +14,8 @@ const UsersList = (props) => {
   }, []);
 
   return (<div>
-    {props.users.loading && <h1>Loading...</h1>}
+    <h1>Users list</h1>
+    {props.users.loading && <h2>Loading users...</h2>}
 
     {props.users.value
     && props.users.value.map(user =>

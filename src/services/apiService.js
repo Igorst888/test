@@ -1,5 +1,7 @@
+const _baseUrl = 'https://jsonplaceholder.typicode.com/users/';
+
 const getAllUsers = async () => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/users');
+  const res = await fetch(_baseUrl);
   if (!res.ok) { throw new Error('fetch error'); }
 
   const body = await res.json();
@@ -7,7 +9,7 @@ const getAllUsers = async () => {
 };
 
 const getUserDetails = async (id) => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/users/' + id);
+  const res = await fetch(_baseUrl + id);
   if (!res.ok) { throw new Error('fetch error')}
 
   const body = await res.json();
