@@ -4,6 +4,7 @@ import { getAllUsers } from '../services/apiService';
 
 export function* handleUsersFetch() {
   try {
+    yield put(fromAction.loadUsers());
     const users = yield call(getAllUsers);
     yield put(fromAction.loadUsersSuccess(users));
   } catch (error) {
